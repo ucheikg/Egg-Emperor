@@ -2,6 +2,7 @@ const int piezoPin = A0;
 const int throttle = A1;
 const int punchingBag = 7;
 const int steeringWheel = A2;
+const int turret = 8;
 int rightTurn = 341;
 int middleValue = 681;
 int leftTurn = 1023;
@@ -17,6 +18,7 @@ char handshake = 'x';
 void setup() {
   Serial.begin(9600);
   pinMode(punchingBag, INPUT_PULLUP);
+  pinMode(turret, INPUT_PULLUP);
 
   bool online = false;
 
@@ -87,6 +89,9 @@ void loop() {
 
   if (inp == 'd') {
     Serial.println(left);
+  }
+  if (inp = 'm'){
+    Serial.println(turret);
   }
 
 
