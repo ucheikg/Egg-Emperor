@@ -3,16 +3,28 @@ const int throttle = A1;
 const int punchingBag = 7;
 const int steeringWheel = A2;
 const int turret = 8;
+
 int rightTurn = 341;
 int middleValue = 681;
 int leftTurn = 1023;
-int throttlevalue = 0;
 int steeringValue = 0;
+bool left;
+bool right;
+
+int throttlevalue = 0;
+int Stop = 0;
+int slow = 341;
+int medium = 682;
+int fast = 1023;
+bool point1;
+bool point2;
+bool point3;
+bool Break;
+
 int piezoValue = 0;
 int threshold = 700;
 bool screaming = false;
-bool left;
-bool right;
+
 char handshake = 'x';
 
 void setup() {
@@ -61,6 +73,30 @@ void loop() {
     right = false;
   }
 
+  if (throttlevalue = Stop) {
+    point1 = false;
+    point2 = false;
+    point3 = false;
+  }
+
+  if (Stop < throttlevalue <= slow) {
+    point1 = true;
+    point2 = false;
+    point3 = false;
+    Break = false;
+  }
+  if (slow < throttlevalue <= medium) {
+    point1 = false;
+    point2 = true;
+    point3 = false;
+
+  }
+  if (medium < throttlevalue <= fast) {
+    point1 = false;
+    point2 = false;
+    point3 = true;
+
+  }
 
 
 
@@ -90,9 +126,19 @@ void loop() {
   if (inp == 'd') {
     Serial.println(left);
   }
-  if (inp = 'm'){
+  if (inp = 'm') {
     Serial.println(turret);
   }
-
+  
+  if (inp = 'h') {
+  Serial.println(point1);
+  }
+  if (inp = 'n') {
+  Serial.println(point2);
+  }
+  
+  if (inp = 'f') {
+  Serial.println(point3);
+  }
 
 }
