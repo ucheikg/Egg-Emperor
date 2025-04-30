@@ -19,7 +19,6 @@ int fast = 1023;
 bool point1;
 bool point2;
 bool point3;
-bool Break;
 
 int piezoValue = 0;
 int threshold = 700;
@@ -63,12 +62,12 @@ void loop() {
     left = false;
   }
 
-  if (rightTurn < steeringValue < middleValue) {
+  if (rightTurn < steeringValue && steeringValue < middleValue) {
     right = false;
     left = false;
   }
 
-  if (middleValue < steeringValue <= leftTurn) {
+  if (middleValue < steeringValue && steeringValue <= leftTurn) {
     left = true;
     right = false;
   }
@@ -79,26 +78,23 @@ void loop() {
     point3 = false;
   }
 
-  if (Stop < throttlevalue <= slow) {
+  if (Stop < throttlevalue && throttlevalue < slow) {
     point1 = true;
     point2 = false;
     point3 = false;
-    Break = false;
   }
-  if (slow < throttlevalue <= medium) {
+  if (slow < throttlevalue && throttlevalue < medium) {
     point1 = false;
     point2 = true;
     point3 = false;
 
   }
-  if (medium < throttlevalue <= fast) {
+  if (medium < throttlevalue && throttlevalue  <= fast) {
     point1 = false;
     point2 = false;
     point3 = true;
 
   }
-
-
 
   if (!Serial.available()) {
     return;
