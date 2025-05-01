@@ -34,17 +34,17 @@ public class movement : MonoBehaviour
         
         if (SerialComManager.instance.GetDataFromArduino("h") == "1")
         {
-            Player.transform.position = Vector3.forward(Player.transform * 10f * )   
+            Player.transform.Translate(Vector3.forward * 15f * Time.deltaTime);
         }
         
         if (SerialComManager.instance.GetDataFromArduino("n") == "1")
         {
-
+            Player.transform.Translate(Vector3.forward * 25f * Time.deltaTime);
         }
         
         if (SerialComManager.instance.GetDataFromArduino("f") == "1")
         {
-
+            Player.transform.Translate(Vector3.forward * 50f * Time.deltaTime);
         }
     }
 
