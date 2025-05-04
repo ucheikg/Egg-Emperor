@@ -10,18 +10,24 @@ public class change : MonoBehaviour
     float punchCD = 3f;
     float laserduration = 15f;
     float punchDuration = 4f;
+    float bulletSpeed = 10f;
     bool readyToFire = true;
     bool readyToPunch = true;
     float speed = 15f;
+
     // attacks
-    [SerializeField] private GameObject laser;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private ParticleSystem shooting;
+    [SerializeField] private Transform turretTip;
+    [SerializeField] private ParticleSystem laser;
     [SerializeField] private GameObject punchSpring;
     [SerializeField] private GameObject punchorigin;
     [SerializeField] private GameObject punchExtension;
     // Start is called before the first frame update
     void Start()
     {
-        laser.SetActive(false);
+        laser.Stop();
+        shooting.Stop();
     }
 
     // Update is called once per frame
@@ -37,17 +43,27 @@ public class change : MonoBehaviour
         {
             StartCoroutine(Punch());
         }
+        if (SerialComManager.instance.GetDataFromArduino("a") == "1")
+        {
+            Quaternion bulletRotation = Quaternion.Euler(0, 0, 90);
+            shooting.Play();
+            Rigidbody rb = Instantiate(bullet, turretTip.position, bulletRotation).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
+        } else if (SerialComManager.instance.GetDataFromArduino("a") == "0")
+        {
+            shooting.Stop();
+        }
     } 
 
     IEnumerator LaserAttack()
     {
-        // activate laser and makes it inactive
-        laser.SetActive(true);
+        // activate laser and makes it unable to fire until cooldown is finished
+        laser.Play();
         readyToFire = false;
         // how long the laser lasts;
         yield return new WaitForSeconds(laserduration);
         //laser turns off
-        laser.SetActive(false);
+        laser.Stop();
         // cooldown starts 
         yield return new WaitForSeconds(cooldown);
         // cooldown is over and laser can be fired again
