@@ -19,9 +19,9 @@ int Stop = 0;
 int slow = 341;
 int medium = 682;
 int fast = 1023;
-bool point1;
-bool point2;
-bool point3;
+bool point1 = false;
+bool point2 = false;
+bool point3 = false;
 
 // voice module value with threshold
 int piezoValue = 0;
@@ -134,18 +134,18 @@ void loop() {
   if (inp == 'd') {
     Serial.println(left);
   }
-  if (inp = 'm') {
-    Serial.println(turret);
+  if (inp == 'm') {
+    Serial.println(digitalRead(turret));
   }
   
-  if (inp = 'h') {
+  if (inp == 'h') {
   Serial.println(point1);
   }
-  if (inp = 'n') {
+  if (inp == 'n') {
   Serial.println(point2);
   }
   
-  if (inp = 'f') {
+  if (inp == 'f') {
   Serial.println(point3);
   }
 

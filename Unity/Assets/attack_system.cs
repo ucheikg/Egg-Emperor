@@ -39,19 +39,17 @@ public class change : MonoBehaviour
         {
             StartCoroutine(LaserAttack());
         }
+        
         if (readyToPunch && SerialComManager.instance.GetDataFromArduino("q") == "0")
         {
             StartCoroutine(Punch());
-        }
-        if (SerialComManager.instance.GetDataFromArduino("a") == "1")
+        }       
+        if (SerialComManager.instance.GetDataFromArduino("a") == "0")
         {
-            Quaternion bulletRotation = Quaternion.Euler(0, 0, 90);
+            Quaternion bulletRotation = Quaternion.Euler(90, 0, 0);
             shooting.Play();
             Rigidbody rb = Instantiate(bullet, turretTip.position, bulletRotation).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
-        } else if (SerialComManager.instance.GetDataFromArduino("a") == "0")
-        {
-            shooting.Stop();
         }
     } 
 
