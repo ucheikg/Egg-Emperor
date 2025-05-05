@@ -5,7 +5,6 @@ public class movement : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform Playercamera;
-    [SerializeField] private GameObject Player;
     bool right;
     bool left;
 
@@ -51,24 +50,6 @@ public class movement : MonoBehaviour
                 break;
             }
             left = false;
-        }
-
-
-        //if the arduino send over 1 then the player should move foward according to the speed set
-        // the speed is decided by which boolean is true in the aurdino code as each if statee=ment only applies to its respective boolean that dont exist at the same time;
-        if (SerialComManager.instance.GetDataFromArduino("h") == "1")
-        {
-            Player.transform.Translate(Vector3.forward * 15f * Time.deltaTime);
-        }
-
-        if (SerialComManager.instance.GetDataFromArduino("n") == "1")
-        {
-            Player.transform.Translate(Vector3.forward * 25f * Time.deltaTime);
-        }
-
-        if (SerialComManager.instance.GetDataFromArduino("f") == "1")
-        {
-            Player.transform.Translate(Vector3.forward * 50f * Time.deltaTime);
         }
     }
 }

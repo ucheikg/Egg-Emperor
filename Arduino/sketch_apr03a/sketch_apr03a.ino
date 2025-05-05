@@ -22,6 +22,7 @@ int fast = 1023;
 bool point1 = false;
 bool point2 = false;
 bool point3 = false;
+bool breaks;
 
 // voice module value with threshold
 int piezoValue = 0;
@@ -87,6 +88,7 @@ void loop() {
     point1 = false;
     point2 = false;
     point3 = false;
+    breaks = true;
   }
 // checks if it has been turned slightly foward
   if (Stop < throttlevalue && throttlevalue < slow) {
@@ -147,6 +149,10 @@ void loop() {
   
   if (inp == 'f') {
   Serial.println(point3);
+  }
+
+  if (inp == 'o'){
+    Serial.println(breaks);
   }
 
 }

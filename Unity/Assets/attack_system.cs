@@ -53,6 +53,11 @@ public class change : MonoBehaviour
             Rigidbody rb = Instantiate(bullet, turretTip.position, bulletRotation).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     } 
 
     IEnumerator LaserAttack()
