@@ -28,6 +28,8 @@ public class change : MonoBehaviour
     {
         laser.Stop();
         shooting.Stop();
+        StopCoroutine(LaserAttack());
+        StopCoroutine(Punch());
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class change : MonoBehaviour
         {
             StartCoroutine(Punch());
         }       
-        if (SerialComManager.instance.GetDataFromArduino("a") == "0")
+        if (SerialComManager.instance.GetDataFromArduino("m") == "0")
         {
             Quaternion bulletRotation = Quaternion.Euler(90, 0, 0);
             shooting.Play();
