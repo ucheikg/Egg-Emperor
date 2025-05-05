@@ -1,5 +1,4 @@
 using GamesAcademy.SerialPackage;
-using System.Collections;
 using UnityEngine;
 
 public class movement : MonoBehaviour
@@ -24,18 +23,18 @@ public class movement : MonoBehaviour
         if (SerialComManager.instance.GetDataFromArduino("s") == "1")
         {
             right = true;
-            
+
             while (right)
             {
                 Playercamera.Rotate(0, rotationSpeed * Time.deltaTime, 0);
 
                 if (SerialComManager.instance.GetDataFromArduino("s") == "0")
                 {
-                    right = false;
                     break;
                 }
-
+                break;
             }
+            right = false;
         }
         //if the arduino send over 1 then the player should turn to the right
         if (SerialComManager.instance.GetDataFromArduino("d") == "1")
@@ -47,11 +46,11 @@ public class movement : MonoBehaviour
 
                 if (SerialComManager.instance.GetDataFromArduino("d") == "0")
                 {
-                    left = false;
                     break;
                 }
-
+                break;
             }
+            left = false;
         }
 
 
