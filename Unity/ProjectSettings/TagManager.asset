@@ -6,15 +6,20 @@ TagManager:
   tags:
   - laser
   - impact
+  - ground
+  - enemy
+  - flamethrower
+  - bullet
+  - punchspring
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - isGround
   - Water
   - UI
-  - 
-  - 
+  - Trees
+  - isPlayer
   - 
   - 
   - 
