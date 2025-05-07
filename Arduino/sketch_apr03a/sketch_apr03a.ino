@@ -84,7 +84,7 @@ void loop() {
     right = false;
   }
 // checks if its been turned all the way back
-  if (throttlevalue = Stop) {
+  if (throttlevalue == Stop) {
     point1 = false;
     point2 = false;
     point3 = false;
