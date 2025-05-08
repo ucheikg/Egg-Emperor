@@ -6,10 +6,10 @@ public class enemy_damage : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    int health = 100;
-    public bool alive;
+    [SerializeField] int health = 100;
+    public bool alive = true;
     bool takingdamage;
-    bool onFire;
+    bool onFire = false;
     bool safe;
 
     void Start()
@@ -28,11 +28,16 @@ public class enemy_damage : MonoBehaviour
                 break;
             }
         }
-        takingdamage = false;
+        onFire = false;
 
         if(health <= 0)
         {
             alive = false;
+        }
+
+        if (!alive)
+        {
+            Application.Quit();
         }
     }
 
@@ -46,6 +51,7 @@ public class enemy_damage : MonoBehaviour
         else if (other.gameObject.CompareTag("bullet"))
         {
             health--;
+            Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("punchspring"))
         {

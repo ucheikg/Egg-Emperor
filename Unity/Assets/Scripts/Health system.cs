@@ -26,6 +26,15 @@ public class NewBehaviourScript : MonoBehaviour
         {
             foild = true;
         }
+
+        if (foild == true)
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,4 +53,5 @@ public class NewBehaviourScript : MonoBehaviour
             safe = true;
         }
     }
+
 }
