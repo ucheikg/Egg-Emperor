@@ -5029,7 +5029,6 @@ GameObject:
   - component: {fileID: 1902427639}
   - component: {fileID: 1902427640}
   - component: {fileID: 1902427642}
-  - component: {fileID: 1902427641}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -5087,11 +5086,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2.5, y: 2.5, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1902427636
 MeshRenderer:
@@ -5192,18 +5191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1902427632}
---- !u!114 &1902427641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902427632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db63117d678454540b027f2c9d46d0fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1902427642
 MonoBehaviour:
   m_ObjectHideFlags: 0

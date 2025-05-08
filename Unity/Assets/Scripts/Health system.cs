@@ -6,34 +6,22 @@ public class NewBehaviourScript : MonoBehaviour
 {
 
     int health = 100;
-    bool attacked;
-    bool safe;
     public bool foild = false;
+    int currentHealth;
 
     void Update()
     {
-        while(attacked)
-        {
-            health--;
-            if (safe == true)
-            {
-                break;
-            }
-        }
-        attacked = false;
-
         if (health <= 0)
         {
-            foild = true;
+            Application.Quit();
+            Debug.Log("died");
         }
 
-        if (foild == true)
-        {
-            Application.Quit();
-        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("quit");
             Application.Quit();
+
         }
     }
 
@@ -41,8 +29,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("enemy"))
         {
-            attacked = true;
-            safe = false;
+            currentHealth = health;
+            health--;
         }
     }
 
@@ -50,7 +38,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("enemy"))
         {
-            safe = true;
+            health = currentHealth;
         }
     }
 

@@ -4,66 +4,45 @@ using UnityEngine;
 
 public class enemy_damage : MonoBehaviour
 {
-    // Start is called before the first frame update
 
-    [SerializeField] int health = 100;
-    public bool alive = true;
-    bool takingdamage;
-    bool onFire = false;
-    bool safe;
+    int health = 100;
+    public bool foild = false;
+    int currentHealth;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        while (onFire)
+        if (health <= 0)
         {
-            health--;
-            if (safe == true)
-            {
-                break;
-            }
-        }
-        onFire = false;
-
-        if(health <= 0)
-        {
-            alive = false;
-        }
-
-        if (!alive)
-        {
+            Destroy(gameObject);
             Application.Quit();
+            Debug.Log("died");
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("flamethrower"))
+        if (other.gameObject.CompareTag("laser"))
         {
-            onFire = true;
-            safe = false;
+            currentHealth = health;
+            health--;
         }
-        else if (other.gameObject.CompareTag("bullet"))
+        if (other.gameObject.CompareTag("laser"))
+        {
+            health -= 3;
+        }
+        if (other.gameObject.CompareTag("bullet"))
         {
             health--;
-            Destroy(other.gameObject);
-        }
-        else if (other.gameObject.CompareTag("punchspring"))
-        {
-            health -= 15;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("flamethrower"))
+        if (other.gameObject.CompareTag("laser"))
         {
-            safe = true;
+            health = currentHealth;
         }
     }
+
 }
