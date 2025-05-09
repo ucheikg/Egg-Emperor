@@ -116,7 +116,7 @@ void loop() {
   //otherwise read the serial
   char inp = Serial.read();
 
-  //If we receive 'a' then I know that I want to read the analogue sensor so send back that data
+  //If we receive the specific character mentioned then send the data attached
   if (inp == 'a') {
     Serial.println(throttlevalue);
   }
