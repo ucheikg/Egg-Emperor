@@ -11,12 +11,13 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Update()
     {
+        // if Player has zero health or less the player has died and the program ends
         if (health <= 0)
         {
             Application.Quit();
             Debug.Log("died");
         }
-
+        // allows players to quit game with escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("quit");
@@ -24,7 +25,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         }
     }
-
+    // if player makes contact with enemy health reduces
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("enemy"))
@@ -33,7 +34,7 @@ public class NewBehaviourScript : MonoBehaviour
             health--;
         }
     }
-
+    // when player leaves player vicinity health stops reducing
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("enemy"))
