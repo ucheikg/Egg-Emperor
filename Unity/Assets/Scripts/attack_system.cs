@@ -25,8 +25,11 @@ public class change : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        //stops all animations at the start
         laser.Stop();
         shooting.Stop();
+        // stops all coroutines at the start so they dont clash
         StopCoroutine(LaserAttack());
         StopCoroutine(Punch());
     }
@@ -35,7 +38,7 @@ public class change : MonoBehaviour
     void Update()
     {
 
-        // if unity recives a one from the arduino meaning that the bool there is true then it should start the coroutine
+        // if unity recives a one for a specific character from the arduino, meaning that the bool there is true then it should start the coroutine
         if (readyToFire && SerialComManager.instance.GetDataFromArduino("b") == "1")
         {
             StartCoroutine(LaserAttack());
@@ -51,11 +54,6 @@ public class change : MonoBehaviour
             shooting.Play();
             Rigidbody rb = Instantiate(bullet, turretTip.position, bulletRotation).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
         }
     } 
 
