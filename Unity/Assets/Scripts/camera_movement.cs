@@ -18,7 +18,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if the arduino send over 1 then the player should turn to the left
+        //if the arduino character s send over 1 then the player should turn to the left
         if (SerialComManager.instance.GetDataFromArduino("s") == "1")
         {
             right = true;
@@ -35,7 +35,7 @@ public class movement : MonoBehaviour
             }
             right = false;
         }
-        //if the arduino send over 1 then the player should turn to the right
+        //if the arduino character d sends over 1 then the player should turn to the right
         if (SerialComManager.instance.GetDataFromArduino("d") == "1")
         {
             left = true;
